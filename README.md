@@ -8,7 +8,7 @@
 pip install fastvalidate --upgrade
 ```
 
-#### Usage
+#### Dictionary Validation
 
 ```python
 from fastvalidate import Validator
@@ -39,6 +39,53 @@ validator.validate().errors()
 #     'languages': 'Field must have at least 3 items'
 # }
 ```
+
+#### Pydantic Validation
+
+```python
+from fastvalidate import BaseModel
+
+
+class User(BaseModel):
+    email: str
+    website: str
+
+    class Config:
+        rules = dict(
+            email='required|email|min:3',
+            website='required|url|min:3'
+        )
+
+
+user = User(email='whatever', website='whoever')
+# ValidationError
+# [
+#     dict(loc=('email',), msg='Field must be email', type='value_error'),
+#     dict(loc=('website',), msg='Field must be url', type='value_error')
+# ]
+
+```
+
+#### Available Rules
+
+| Type               | Applicable              On         | signature                                        |
+| ----               | ----                               | ----                                             |
+| Boolean            | string, boolean                    | `bool`, `boolean`                                |
+| Numeric            | string, integer                    | `numeric`, `int`, `integer`                      |
+| List               | string(json), list                 | `list`, `array`                                  |
+| Dictionary         | string(json), dict                 | `dict`                                           |
+| Email              | string                             | `email`                                          |
+| Password           | string                             | `password`                                       |
+| RegEx              | string                             | `regex:<pattern>`                                |
+| URL                | string                             | `url`                                            |
+| Length             | string, integer, float, list, dict | `len:<length>`, `length:<length>`                |
+| Min                | string, integer, float, list, dict | `min:<threshold>`                                |
+| Max                | string, integer, float, list, dict | `max:<threshold>`                                |
+| Choice             | string                             | `choice:<x>,<y>,<z>` `in:<x>,<y>,<z>`            |
+| Greater Than       | int                                | `gt:<threshold>`                                 |
+| Greater Than Equal | int                                | `gte:<threshold>`                                |
+| Less Than          | int                                | `lt:<threshold>`                                 |
+| Less Than Equal    | int                                | `lte:<threshold>`                                |
 
 #### Testing
 
