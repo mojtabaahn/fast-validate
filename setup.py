@@ -5,7 +5,6 @@ long_description = (Path(__file__).parent / "README.md").read_text()
 
 setuptools.setup(
     name="fastvalidate",
-    version="0.0.4",
     url="https://github.com/mojtabaahn/fast-validate",
     author="Mojtabaa Habibain",
     author_email="mojtabaa.hn@gmail.com",
@@ -20,4 +19,6 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
+    setuptools_git_versioning={"enabled": True},
+    setup_requires=["setuptools-git-versioning"],
 )
