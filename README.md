@@ -96,16 +96,3 @@ pip install pytest
 # run tests
 python -m pytest
 ```
-
-#### Development
-
-```bash
-# install requirements
-pip install build twine
-
-# Build package
-make build
-
-# Push to basalam repository
-make push
-```
