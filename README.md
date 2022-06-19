@@ -86,6 +86,15 @@ user = User(email='whatever', website='whoever')
 | Greater Than Equal | int                                | `gte:<threshold>`                                |
 | Less Than          | int                                | `lt:<threshold>`                                 |
 | Less Than Equal    | int                                | `lte:<threshold>`                                |
+| Alpha              | string                             | `alpha`                                          |
+| Alpha Numeric      | string                             | `alpha_num`,`alpha_numeric`                      |
+| Alpha Num Dash     | string                             | `alpha_dash`                                     |
+| Date               | string                             | `date`                                           |
+| UUID               | string                             | `uuid`                                           |
+| IPV4               | string                             | `ipv4`                                           |
+| IPV6               | string                             | `ipv6`                                           |
+| IP                 | string                             | `ip`                                             |
+| Mac Address        | string                             | `mac`,`mac_address`                              |
 
 #### Testing
 

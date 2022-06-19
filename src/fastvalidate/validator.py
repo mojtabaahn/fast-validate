@@ -1,22 +1,28 @@
 from typing import Dict, List, Union, Type
 
 from fastvalidate.rule_abstract import RuleAbstract
+from fastvalidate.rules.alpha import AlphaRule
+from fastvalidate.rules.alpha_dash import AlphaDashRule
+from fastvalidate.rules.alpha_num import AlphaNumRule
 from fastvalidate.rules.boolean import BoolRule
 from fastvalidate.rules.choice import ChoiceRule
 from fastvalidate.rules.comparison import GreaterThanRule, GreaterThanEqualRule, LessThanRule, LessThanEqualRule
+from fastvalidate.rules.date import DateRule
 from fastvalidate.rules.dict import DictRule
 from fastvalidate.rules.email import EmailRule
 from fastvalidate.rules.len import LenRule
 from fastvalidate.rules.list import ListRule
 from fastvalidate.rules.max import MaxRule
 from fastvalidate.rules.min import MinRule
+from fastvalidate.rules.network import Ipv4Rule, Ipv6Rule, IpRule, MacAddressRule
 from fastvalidate.rules.numeric import NumericRule
 from fastvalidate.rules.password import PasswordRule
 from fastvalidate.rules.regex import RegexRule
 from fastvalidate.rules.required import RequiredRule
 from fastvalidate.rules.url import UrlRule
+from fastvalidate.rules.uuid import UUIDRule
 
-AVAILABLE_RULES : List[Type[RuleAbstract]] = [
+AVAILABLE_RULES: List[Type[RuleAbstract]] = [
     RequiredRule,
     BoolRule,
     GreaterThanRule,
@@ -33,7 +39,16 @@ AVAILABLE_RULES : List[Type[RuleAbstract]] = [
     NumericRule,
     PasswordRule,
     RegexRule,
-    UrlRule
+    UrlRule,
+    AlphaRule,
+    AlphaDashRule,
+    AlphaNumRule,
+    DateRule,
+    Ipv4Rule,
+    Ipv6Rule,
+    IpRule,
+    MacAddressRule,
+    UUIDRule,
 ]
 
 
@@ -75,7 +90,7 @@ class Validator:
     def __rule_from_string(self, rule: str) -> RuleAbstract:
         slug, separator, args = rule.partition(':')
         args = args.split(",") if separator != '' else []
-        rule_class : Type[RuleAbstract] = self.__available_rules.get(slug, None)
+        rule_class: Type[RuleAbstract] = self.__available_rules.get(slug, None)
         if rule_class is None: raise Exception(f"Rule with signature of {slug} is not supported")
         return rule_class(*args)
 
