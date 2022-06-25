@@ -1,4 +1,4 @@
-![Packagist License](https://img.shields.io/packagist/l/mojtabaahn/fast-validate?style=for-the-badge)
+![Packagist License](https://img.shields.io/pypi/l/fastvalidate?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/mojtabaahn/fast-validate?style=for-the-badge)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/fastvalidate?style=for-the-badge)
 ![PyPI](https://img.shields.io/pypi/v/fastvalidate?style=for-the-badge)
