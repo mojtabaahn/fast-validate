@@ -1,10 +1,7 @@
-import re
-from typing import Optional, Any
-
-import pytest
-from pydantic import ValidationError, BaseConfig, Extra
+from pydantic import ValidationError, BaseConfig
 
 from fastvalidate.pydantic import BaseModel
+
 
 def test_base_model():
     class Model(BaseModel):

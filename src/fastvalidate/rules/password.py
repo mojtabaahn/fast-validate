@@ -26,7 +26,7 @@ class PasswordRule(ComplexRuleAbstract):
         if re.search(r"[a-z]", value) is None:
             return False, 'Field must have at least one lowercase characters'
 
-        if re.search(r"[ !#$%&'()*+,-./[\\\]^_`{|}~" + r'"]', value) is None:
+        if re.search(r"[@!#$%&'()*+,-./[\\\]^_`{|}~" + r'"]', value) is None:
             return False, 'Field must have at least one symbol characters'
 
         return True, None
